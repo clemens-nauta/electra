@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Clemens Nauta. Business development and mobility strategy. Electra application page." />
+  <title>Clemens Nauta</title>
+
+  <style>
+    /*
+      Single file personal page
+      Style direction: calm, warm, simple, impact first. Inspired by Electra language and feel.
+      Quick edits: adjust CSS variables in :root.
+    */
+
+    :root{
+      /* Warm calm palette, tuned for a fast charging brand feel */
+      --bg: #0b0f14;
+      --surface: rgba(255,255,255,.06);
+      --surface2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.94);
+      --muted: rgba(255,255,255,.72);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+
+      /* Soft warm accents */
+      --mint: #b7f1e3;
+      --rose: #f6c6df;
+      --lav:  #cdbdff;
+      --ring: rgba(183,241,227,.45);
+
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1040px;
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    [data-theme="light"]{
+      --bg: #fbfbff;
+      --surface: rgba(10,14,22,.05);
+      --surface2: rgba(10,14,22,.08);
+      --text: rgba(10,14,22,.92);
+      --muted: rgba(10,14,22,.70);
+      --border: rgba(10,14,22,.12);
+      --shadow: 0 18px 60px rgba(10,14,22,.12);
+      --ring: rgba(10,14,22,.12);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(183,241,227,.25), transparent 60%),
+        radial-gradient(900px 700px at 85% 20%, rgba(246,198,223,.22), transparent 55%),
+        radial-gradient(900px 700px at 70% 90%, rgba(205,189,255,.18), transparent 55%),
+        var(--bg);
+      line-height: 1.55;
+      letter-spacing: .2px;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: color-mix(in oklab, var(--bg) 70%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 650;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
+    .mark{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--mint), var(--rose), var(--lav));
+      box-shadow: 0 0 0 6px color-mix(in oklab, var(--mint) 16%, transparent);
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap: 2px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a{
+      font-size: 14px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+    nav a:hover{
+      color: var(--text);
+      background: var(--surface);
+      text-decoration: none;
+    }
+
+    .actions{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      user-select:none;
+    }
+    .btn:hover{ background: var(--surface2); }
+    .btn:focus{ outline: 3px solid var(--ring); outline-offset: 2px; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 26px 18px 64px;
+    }
+
+    .hero{
+      margin-top: 18px;
+      padding: 32px;
+      border-radius: var(--radius2);
+      background: linear-gradient(180deg,
+        color-mix(in oklab, var(--surface) 92%, transparent),
+        color-mix(in oklab, var(--surface2) 55%, transparent)
+      );
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset: -120px -180px auto auto;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(183,241,227,.28), transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(246,198,223,.24), transparent 62%);
+      filter: blur(4px);
+      pointer-events:none;
+    }
+
+    h1{
+      margin: 0 0 8px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 1.12;
+      letter-spacing: .3px;
+    }
+    .subtitle{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 78ch;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .chip{
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--surface) 85%, transparent);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    main{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      align-items:start;
+    }
+    @media (max-width: 920px){
+      main{ grid-template-columns: 1fr; }
+    }
+
+    section.card{
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+    }
+
+    h2{
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: .25px;
+    }
+    p{
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    p strong{
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .divider{
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0;
+    }
+
+    .grid{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .item{
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, va
